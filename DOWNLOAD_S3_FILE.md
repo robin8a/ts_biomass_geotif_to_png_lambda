@@ -1,4 +1,4 @@
-# AWS S3 Download Instructions
+# Download Files from S3
 
 This document provides instructions for downloading files from S3 using the AWS CLI.
 
@@ -107,9 +107,32 @@ aws s3 ls s3://BUCKET_NAME/ --profile PROFILE_NAME
 aws s3 ls s3://BUCKET_NAME/path/to/directory/ --profile PROFILE_NAME
 ```
 
-## Notes
+## List Generated PNG Files
 
-- The command will show progress information during download
-- Successful downloads will display confirmation with file size and transfer details
-- Make sure you have the necessary permissions to access the S3 bucket and objects
-- Use `--dryrun` flag to test commands without actually downloading files
+### List all PNG files in the bucket
+
+```bash
+aws s3 ls s3://tsbiomassmodeldata/ --recursive --profile suan-blockchain | grep "\.png$"
+```
+
+### List PNG files with a specific prefix
+
+```bash
+aws s3 ls s3://tsbiomassmodeldata/png_ --recursive --profile suan-blockchain
+```
+
+### List PNG files and show size
+
+```bash
+aws s3 ls s3://tsbiomassmodeldata/ --recursive --profile suan-blockchain | grep "\.png$" | awk '{print $3, $4}'
+```
+
+### Count total PNG files in the bucket
+
+```bash
+aws s3 ls s3://tsbiomassmodeldata/ --recursive --profile suan-blockchain | grep -c "\.png$"
+```
+
+```bash
+aws s3 cp s3://tsbiomassmodeldata/png_biomass_map_img__20251016212350__S2__B4_B3_B2__2023_01_28__2336.png ./output.png --profile suan-blockchain
+```

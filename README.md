@@ -162,6 +162,10 @@ aws lambda update-function-code \
 }
 ```
 
+```sh
+aws s3 cp s3://tsbiomassmodeldata/biomass_map_img__20251016212350__S2__B4_B3_B2__2023_01_28__2336.tif . --profile suan-blockchain
+```
+
 ### Error Response
 
 ```json
