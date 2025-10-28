@@ -142,11 +142,9 @@ aws lambda invoke \
 aws s3 rm s3://tsbiomassmodeldata/biomass_map_img__20251016212350__S2__B4_B3_B2__2023_01_28__2336.png --profile suan-blockchain
 ```
 
-
 ## Invoke via API Gateway
 
 ### Using curl
-
 
 ```bash
 curl -X POST https://9e7wnzvwcb.execute-api.us-east-1.amazonaws.com/dev/util_export_png \
@@ -155,6 +153,12 @@ curl -X POST https://9e7wnzvwcb.execute-api.us-east-1.amazonaws.com/dev/util_exp
     "bucket": "tsbiomassmodeldata",
     "key": "biomass_map_img__20251016212350__S2__B4_B3_B2__2023_01_28__2336.tif"
   }'
+```
+
+Output:
+
+```json
+{"statusCode": 200, "body": "{\"message\": \"Successfully converted biomass_map_img__20251016212350__S2__B4_B3_B2__2023_01_28__2336.tif to PNG\", \"input_location\": \"s3://tsbiomassmodeldata/biomass_map_img__20251016212350__S2__B4_B3_B2__2023_01_28__2336.tif\", \"output_location\": \"s3://tsbiomassmodeldata/png_biomass_map_img__20251016212350__S2__B4_B3_B2__2023_01_28__2336.png\"}"}
 ```
 
 ### Example Response
