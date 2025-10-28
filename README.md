@@ -136,6 +136,36 @@ aws lambda invoke \
     --profile suan-blockchain
 ```
 
+## Delete previous .png image generated
+
+```bash
+aws s3 rm s3://tsbiomassmodeldata/biomass_map_img__20251016212350__S2__B4_B3_B2__2023_01_28__2336.png --profile suan-blockchain
+```
+
+
+## Invoke via API Gateway
+
+### Using curl
+
+
+```bash
+curl -X POST https://9e7wnzvwcb.execute-api.us-east-1.amazonaws.com/dev/util_export_png \
+  -H "Content-Type: application/json" \
+  -d '{
+    "bucket": "tsbiomassmodeldata",
+    "key": "biomass_map_img__20251016212350__S2__B4_B3_B2__2023_01_28__2336.tif"
+  }'
+```
+
+### Example Response
+
+```json
+{
+    "statusCode": 200,
+    "body": "{\"message\": \"Successfully converted biomass_map_img__20251016212350__S2__B4_B3_B2__2023_01_28__2336.tif to PNG\", \"input_location\": \"s3://tsbiomassmodeldata/biomass_map_img__20251016212350__S2__B4_B3_B2__2023_01_28__2336.tif\", \"output_location\": \"s3://tsbiomassmodeldata/png_biomass_map_img__20251016212350__S2__B4_B3_B2__2023_01_28__2336.png\"}"
+}
+```
+
 ## Update Function Code
 
 To update the function with new code:
